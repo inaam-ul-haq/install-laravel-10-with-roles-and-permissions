@@ -16,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/clear', function () {
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    return "Cleared";
+});
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -24,7 +32,7 @@ Route::get('verify-email', function () {
     return view('verify_email');
 })->name('verify_email');
 
-Auth::routes(['verify' => true, 'login' => false, 'register' => false, 'logout' => false]);
+Auth::routes(['verify' => true, 'login' => false, 'register' => false]);
 
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 
