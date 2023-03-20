@@ -15,6 +15,10 @@ class EnsureEmailIsVerified
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if ($request->user() && !$request->user()->hasVerifiedEmail()) {
+            return redirect()->route('verify_email');
+        }
+
         return $next($request);
     }
 }
