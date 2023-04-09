@@ -28,7 +28,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('verify-email', function () {
+Route::get('verify', function () {
     return view('verify_email');
 })->name('verify_email');
 
