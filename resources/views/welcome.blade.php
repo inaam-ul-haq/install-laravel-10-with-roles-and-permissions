@@ -1,3 +1,3 @@
-<x-guest-layout pageTitle="">
+<x-guest-layout pageTitle="Home page">
     Welcome blade
 </x-guest-layout>

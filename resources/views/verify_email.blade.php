@@ -1,3 +1,3 @@
-<x-guest-layout pageTitle="Verify your email">
+<x-guest-layout pageTitle="Verify your account">
     Verify your email first
 </x-guest-layout>
