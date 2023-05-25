@@ -29,7 +29,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('verify', function () {
-    return view('verify_email');
+    return view('auth.verify');
 })->name('verify_email');
 
 Auth::routes(['verify' => true, 'login' => false, 'register' => false]);
