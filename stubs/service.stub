@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Helper\BaseQuery;
-use App\Http\Models\{{modelName}};
+use App\Models\{{modelName}};
 
 class {{ serviceClass }}
 {
