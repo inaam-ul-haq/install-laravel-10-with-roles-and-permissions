@@ -1,8 +1,9 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Controllers;
 
-use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Services\{{ServiceName}};
+use App\Http\Requests\{{RequestValidation}};
 
 class {{ class }} extends Controller
 {
@@ -17,7 +18,7 @@ class {{ class }} extends Controller
      */
     public function __construct()
     {
-        $this->_service = new {{ServiceName}};
+        $this->_service = new {{ServiceName}}();
     }
 
     /**
@@ -27,7 +28,7 @@ class {{ class }} extends Controller
      */
     public function index()
     {
-        $data['all'] = $this->_service->get_all($this->_modal);
+        $data['all'] = $this->_service->index();
         return view($this->_directory . '.all', compact('data'));
     }
 
@@ -49,7 +50,7 @@ class {{ class }} extends Controller
      */
     public function store({{RequestValidation}} $request)
     {
-        $this->_service->add($request->validated());
+        $this->_service->store($request->validated());
         return redirect()->route($this->_route . '.index');
     }
 
@@ -60,7 +61,7 @@ class {{ class }} extends Controller
      */
     public function show($id)
     {
-        $data = $this->_service->get_by_id($id);
+        $data = $this->_service->show($id);
         return view($this->_directory . 'show', compact('data'));
     }
 
@@ -72,7 +73,7 @@ class {{ class }} extends Controller
      */
     public function edit($id)
     {
-        $data = $this->_service->get_by_id($id);
+        $data = $this->_service->show($id);
         return view($this->_directory . '.edit', compact('data'));
     }
 
@@ -84,14 +85,14 @@ class {{ class }} extends Controller
      */
     public function update({{RequestValidation}} $request, $id)
     {
-        $this->_service->udpate($id, $request->validated());
+        $this->_service->update($id, $request->validated());
         return redirect()->route($this->_route . '.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \{{ namespacedModel }} $modal
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
