@@ -1,14 +1,13 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Controllers;
 
-use {{ rootNamespace }}Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Services\{{ServiceName}};
+use App\Http\Requests\{{RequestValidation}};
 
 class {{ class }} extends Controller
 {
-    private $_request = null;
-    private $_modal = null;
+    private $_service = null;
     private $_directory = '';
     private $_route = '';
 
@@ -17,10 +16,9 @@ class {{ class }} extends Controller
      *
      * @return $reauest, $modal
      */
-    public function __construct(Request $request, {{ model }} $modal)
+    public function __construct()
     {
-        $this->_request = $request;
-        $this->_modal = $modal;
+        $this->_service = new {{ServiceName}}();
     }
 
     /**
@@ -30,7 +28,7 @@ class {{ class }} extends Controller
      */
     public function index()
     {
-        $data['all'] = $this->get_all($this->_modal);
+        $data['all'] = $this->_service->index();
         return view($this->_directory . '.all', compact('data'));
     }
 
@@ -50,70 +48,56 @@ class {{ class }} extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store({{RequestValidation}} $request)
     {
-        $this->validate($this->_request, [
-            'name' => 'required',
-        ]);
-
-        $data = $this->_request->except('_token');
-        $var = $this->add($this->_modal, $data);
-
+        $this->_service->store($request->validated());
         return redirect()->route($this->_route . '.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  $this->_modal $modal
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $data = $this->get_by_id($this->_modal, $id);
+        $data = $this->_service->show($id);
         return view($this->_directory . 'show', compact('data'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  $this->_modal $modal
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = $this->get_by_id($this->_modal, $id);
+        $data = $this->_service->show($id);
         return view($this->_directory . '.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \{{ namespacedModel }} $modal
+     * @param Request Validation $validation
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update({{RequestValidation}} $request, $id)
     {
-        $this->validate($this->_request, [
-            'name' => 'required',
-        ]);
-
-        $data = $this->_request->except('_token', '_method');
-        $data = $this->get_by_id($this->_modal, $id)->update($data);
-
+        $this->_service->update($id, $request->validated());
         return redirect()->route($this->_route . '.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \{{ namespacedModel }} $modal
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $this->get_by_id($this->_modal, $id)->delete();
+        $this->_service->destroy($id);
         return redirect()->route($this->_route . '.index');
     }
 }
