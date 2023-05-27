@@ -192,5 +192,7 @@ class IuhCommand extends Command
         file_put_contents($viewDirectory . '/edit.blade.php', $vieweditStubContent);
 
         return true;
+
+        $this->info("Custom class {$className} generated successfully!");
     }
 }
