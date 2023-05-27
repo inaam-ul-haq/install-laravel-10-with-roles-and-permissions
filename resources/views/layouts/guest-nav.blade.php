@@ -26,16 +26,14 @@
                             {{ Auth::user()->name }}
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">                            
+                            <a class="dropdown-item" href="{{ route('auth') }}">
+                                {{ __('Dashboard') }}
                             </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
                         </div>
                     </li>
                 @endguest
@@ -43,3 +41,26 @@
         </div>
     </div>
 </nav>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-bs-labelledby="exampleModalLabel"
+    aria-bs-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-bs-dismiss="modal" aria-bs-label="Close">
+                    <span aria-bs-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <input type="submit" value="Logout" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

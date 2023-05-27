@@ -1,4 +1,5 @@
 @include('layouts.auth_links')
+@include('layouts.auth_top')
 
 {{ $slot }}
 
