@@ -1,21 +1,19 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\View\Components\Admin\Pages\User;
 
 use Illuminate\View\Component;
 
-class {{ class }} extends Component
+class All extends Component
 {
-    public $compoData = null;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($compoData)
+    public function __construct()
     {
-        $this->compoData = $compoData;
+        //
     }
 
     /**
@@ -25,6 +23,6 @@ class {{ class }} extends Component
      */
     public function render()
     {
-        return {{ view }};
+        return view('components.admin.pages.user.all');
     }
 }

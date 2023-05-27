@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\{{ServiceName}};
-use App\Http\Requests\{{RequestValidation}};
+use App\Services\UserService;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
 
-class {{ class }} extends Controller
+class UserController extends Controller
 {
     private $_service = null;
-    private $_directory = 'auth/pages/{{pagename}}';
-    private $_route = '{{pagename}}';
+    private $_directory = 'auth/pages/users';
+    private $_route = 'users';
 
     /**
      * Create a new controller instance.
@@ -18,7 +19,7 @@ class {{ class }} extends Controller
      */
     public function __construct()
     {
-        $this->_service = new {{ServiceName}}();
+        $this->_service = new UserService();
     }
 
     /**
@@ -48,7 +49,7 @@ class {{ class }} extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store({{RequestValidation}} $request)
+    public function store(UserRequest $request)
     {
         $this->_service->store($request->validated());
         return redirect()->route($this->_route . '.index');
@@ -62,6 +63,17 @@ class {{ class }} extends Controller
     public function show($id)
     {
         $data = $this->_service->show($id);
+        return view($this->_directory . '.show', compact('data'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        $data = Auth::user();
         return view($this->_directory . '.show', compact('data'));
     }
 
@@ -83,7 +95,7 @@ class {{ class }} extends Controller
      * @param Request Validation $validation
      * @return \Illuminate\Http\Response
      */
-    public function update({{RequestValidation}} $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $this->_service->update($id, $request->validated());
         return redirect()->route($this->_route . '.index');
