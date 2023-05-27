@@ -8,8 +8,8 @@ use App\Http\Requests\{{RequestValidation}};
 class {{ class }} extends Controller
 {
     private $_service = null;
-    private $_directory = '';
-    private $_route = '';
+    private $_directory = 'auth/pages/{{pagename}}';
+    private $_route = '{{pagename}}';
 
     /**
      * Create a new controller instance.
@@ -62,7 +62,7 @@ class {{ class }} extends Controller
     public function show($id)
     {
         $data = $this->_service->show($id);
-        return view($this->_directory . 'show', compact('data'));
+        return view($this->_directory . '.show', compact('data'));
     }
 
     /**
