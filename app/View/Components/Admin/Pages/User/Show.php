@@ -1,10 +1,10 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\View\Components\Admin\Pages\User;
 
 use Illuminate\View\Component;
 
-class {{ class }} extends Component
+class Show extends Component
 {
     public $compoData = null;
 
@@ -25,6 +25,6 @@ class {{ class }} extends Component
      */
     public function render()
     {
-        return {{ view }};
+        return view('components.admin.pages.user.show');
     }
 }

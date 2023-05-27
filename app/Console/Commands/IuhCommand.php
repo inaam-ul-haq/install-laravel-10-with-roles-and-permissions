@@ -46,36 +46,40 @@ class IuhCommand extends Command
 
     private function create_components($migration, $className)
     {
+        $data = null;
         $rolesAllData = "";
+        $rolesShowData = "";
+        $rolesCreateData = "";
+        $rolesEditData = "";
         $roles = Role::pluck('name')->all();
         foreach ($roles as $role) {
             // create component for all.blade.php
             $componentAllDirectory = ucfirst(strtolower($role)) . '/Pages/' . $className . '/All';
             $this->call('make:component', ['name' => $componentAllDirectory]);
-            $rolesAllData .= "@hasrole('" . strtolower($role) . "')";
-            $rolesAllData .= "<x-" . strtolower($role) . ".pages." . Str::kebab($className) . ".all />";
-            $rolesAllData .= "@endhasrole";
+            $rolesAllData .= "\t\t\t\t@hasrole('" . strtolower($role) . "')";
+            $rolesAllData .= "<x-" . strtolower($role) . ".pages." . Str::kebab($className) . ".all :compoData='$data' />";
+            $rolesAllData .= "@endhasrole\n\n";
 
             // create component for show.blade.php
             $componentShowDirectory = ucfirst(strtolower($role)) . '/Pages/' . $className . '/Show';
             $this->call('make:component', ['name' => $componentShowDirectory]);
-            $rolesAllData .= "@hasrole('" . strtolower($role) . "')";
-            $rolesAllData .= "<x-" . strtolower($role) . ".pages." . Str::kebab($className) . ".show />";
-            $rolesAllData .= "@endhasrole";
+            $rolesShowData .= "\t\t\t\t@hasrole('" . strtolower($role) . "')";
+            $rolesShowData .= "<x-" . strtolower($role) . ".pages." . Str::kebab($className) . ".show :compoData='$data' />";
+            $rolesShowData .= "@endhasrole\n\n";
 
             // create component for create.blade.php
             $componentCreateDirectory = ucfirst(strtolower($role)) . '/Pages/' . $className . '/Create';
             $this->call('make:component', ['name' => $componentCreateDirectory]);
-            $rolesAllData .= "@hasrole('" . strtolower($role) . "')";
-            $rolesAllData .= "<x-" . strtolower($role) . ".pages." . Str::kebab($className) . ".create />";
-            $rolesAllData .= "@endhasrole";
+            $rolesCreateData .= "\t\t\t\t@hasrole('" . strtolower($role) . "')";
+            $rolesCreateData .= "<x-" . strtolower($role) . ".pages." . Str::kebab($className) . ".create />";
+            $rolesCreateData .= "@endhasrole\n\n";
 
             // create component for edit.blade.php
             $componentEditDirectory = ucfirst(strtolower($role)) . '/Pages/' . $className . '/Edit';
             $this->call('make:component', ['name' => $componentEditDirectory]);
-            $rolesAllData .= "@hasrole('" . strtolower($role) . "')";
-            $rolesAllData .= "<x-" . strtolower($role) . ".pages." . Str::kebab($className) . ".edit />";
-            $rolesAllData .= "@endhasrole";
+            $rolesEditData .= "\t\t\t\t@hasrole('" . strtolower($role) . "')";
+            $rolesEditData .= "<x-" . strtolower($role) . ".pages." . Str::kebab($className) . ".edit :compoData='$data' />";
+            $rolesEditData .= "@endhasrole\n\n";
         }
 
         $authViewPath = resource_path('views/auth/pages/' . $migration . '/');
@@ -88,19 +92,19 @@ class IuhCommand extends Command
         // create file for show.blade.php
         $viewShowStub = $authViewPath . 'show.blade.php';
         $viewShowStubContent = file_get_contents($viewShowStub);
-        $viewShowStubContent = str_replace('{{rolesData}}', $rolesAllData, $viewShowStubContent);
+        $viewShowStubContent = str_replace('{{rolesData}}', $rolesShowData, $viewShowStubContent);
         file_put_contents($viewShowStub, $viewShowStubContent);
 
         // create file for create.blade.php
         $viewCreateStub = $authViewPath . 'create.blade.php';
         $viewCreateStubContent = file_get_contents($viewCreateStub);
-        $viewCreateStubContent = str_replace('{{rolesData}}', $rolesAllData, $viewCreateStubContent);
+        $viewCreateStubContent = str_replace('{{rolesData}}', $rolesCreateData, $viewCreateStubContent);
         file_put_contents($viewCreateStub, $viewCreateStubContent);
 
         // create file for edit.blade.php
         $viewEditStub = $authViewPath . 'edit.blade.php';
         $viewEditStubContent = file_get_contents($viewEditStub);
-        $viewEditStubContent = str_replace('{{rolesData}}', $rolesAllData, $viewEditStubContent);
+        $viewEditStubContent = str_replace('{{rolesData}}', $rolesEditData, $viewEditStubContent);
         file_put_contents($viewEditStub, $viewEditStubContent);
 
         // dd($migration, $className, ucfirst(strtolower($role)), $componentAllDirectory, $componentViewDirectory);
