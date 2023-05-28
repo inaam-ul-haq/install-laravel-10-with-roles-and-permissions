@@ -50,6 +50,7 @@ class UserService
      */
     public function update($id, $data)
     {
+        unset($data['email'], $data['username']);
         return $this->get_by_id($this->_model, $id)->update($data);
     }
 
@@ -59,5 +60,16 @@ class UserService
     public function destroy($id)
     {
         return $this->delete($this->_model, $id);
+    }
+
+    private function validateEmail($email)
+    {
+        $this->get_by_column_single($this->_model, ['email' => $email]);
+
+        if ($email != null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
