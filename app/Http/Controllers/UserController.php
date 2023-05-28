@@ -90,6 +90,30 @@ class UserController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editprofile()
+    {
+        $data = Auth::user();
+        return view($this->_directory . '.edit', compact('data'));
+    }
+
+    /**
+     * Update My profile.
+     *
+     * @param Request Validation $validation
+     * @return \Illuminate\Http\Response
+     */
+    public function updatemyprofile(UserRequest $request)
+    {
+        $this->_service->update(Auth::id(), $request->validated());
+        return redirect()->route('myprofile');
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param Request Validation $validation

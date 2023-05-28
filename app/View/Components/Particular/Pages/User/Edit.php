@@ -6,14 +6,16 @@ use Illuminate\View\Component;
 
 class Edit extends Component
 {
+    public $compoData = null;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($compoData)
     {
-        //
+        $this->compoData = $compoData;
     }
 
     /**

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\Admin\Pages\User;
+namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Edit extends Component
+class InputLabel extends Component
 {
     public $compoData = null;
 
@@ -25,6 +25,6 @@ class Edit extends Component
      */
     public function render()
     {
-        return view('components.admin.pages.user.edit');
+        return view('components.input-label');
     }
 }

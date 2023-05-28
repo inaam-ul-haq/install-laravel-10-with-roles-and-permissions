@@ -49,6 +49,7 @@ Route::group(
         Route::get('', [HomeController::class, 'index'])->name('auth');
         Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-        Route::get('my-profile', [UserController::class, 'profile'])->name('myprofile');
+        Route::get('my-profile', [UserController::class, 'editprofile'])->name('myprofile');
+        Route::put('edit-my-profile', [UserController::class, 'updatemyprofile'])->name('updatemyprofile');
     }
 );
