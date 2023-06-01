@@ -123,10 +123,10 @@ class IuhCommand extends Command
         $stub = str_replace('{{pagename}}', $migration, $stub);
 
         // creating laravel model, migrations, form request, controller classes
-        $this->call('make:model', ['name' => $className]);
-        $this->call('make:migration', ['name' => 'create_' . $migration . '_table']);
+        $this->call('make:model', ['name' => $className], '-mc');
+        // $this->call('make:migration', ['name' => 'create_' . $migration . '_table']);
         $this->call('make:request', ['name' => $requestClassName]);
-        $this->call('make:controller', ['name' => $controllerName]);
+        // $this->call('make:controller', ['name' => $controllerName]);
 
         $newControllerPath = app_path("Http/Controllers/{$controllerName}.php");
 
