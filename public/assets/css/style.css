@@ -1,0 +1,482 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Outfit&family=Roboto&display=swap");
+
+:root {
+  --color-1: #ffffff;
+  --color-2: #fff5f5;
+  --color-3: #1e1e1e;
+  --color-4: rgba(0, 0, 0, 0.7);
+  --color-5: #000000;
+  --color-6: #5cb1ff;
+  /* --color-7: ;
+  --color-8: ; */
+}
+
+body {
+  font-family: "Lobster", cursive;
+  font-family: "Outfit", sans-serif !important;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  background-color: var(--color-1) !important;
+}
+
+/* ----------------------------------Main Header-------------------------------- */
+.main__header {
+}
+
+.main__logo {
+  width: 40%;
+}
+
+.main__logo img {
+  width: 40%;
+}
+
+.navbar__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding-top: 15px;
+}
+
+.navbar__nav li a {
+  color: var(--color-5) !important;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.navbar__nav li {
+  margin-bottom: 10px;
+}
+
+.nav__link {
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+}
+
+.nav__link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transition: width 0.3s;
+}
+
+.nav__link:hover::after {
+  width: 100%;
+  transition: width 0.3s;
+}
+
+.main__button {
+  padding: 5px 20px;
+  background: var(--color-6);
+  color: var(--color-1);
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 3px;
+}
+
+.main__button:hover {
+  color: var(--color-3);
+  transition: all 0.3s ease-in-out;
+}
+
+.main__button-check:focus + .main__button,
+.main__button:focus {
+  outline: 0;
+  box-shadow: none !important;
+}
+
+
+/* ----------------------------------Main Section-------------------------------- */
+/* ----------------------------------Main Footer-------------------------------- */
+
+/* ----------------------------------Main Section  Start -------------------------------- */
+.homebanner{
+
+
+  width: 100%;
+  height: 95vh;
+
+  background-color:var(--color-2);
+
+}
+.main-content h3{
+  font-family: 'Outfit';
+font-style: normal;
+font-weight: 700;
+font-size: 54px;
+ 
+ 
+
+letter-spacing: 0.035em;
+
+color: #000000;
+}
+
+.main-content p{
+  font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+ 
+text-align: justify;
+
+color: rgba(0, 0, 0, 0.7);
+
+}
+.main-content button{
+ font-family: 'Outfit';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+ background: var(--color-6);
+color: #FFFFFF;
+}
+
+.homebanner-img img{
+  width: 100%;
+}
+
+
+
+/*############> About Section Start <######*/
+.aboutmain{
+  text-align: center;
+}
+.aboutmain h3{
+  
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 145.52%;
+/* or 58px */
+
+
+color: #000000;
+
+}
+
+.aboutmain p{
+  font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 202.52%;
+/* or 32px */
+
+text-align: center;
+
+color: rgba(0, 0, 0, 0.7);
+
+}
+
+
+
+/* Work Section Start  */
+.worksection{
+    width: 100%;
+ 
+
+  background-color:var(--color-2);
+
+}
+ 
+
+.work-card{
+  text-align: center;
+
+}
+.work-card img{
+  width: 80px;
+}
+
+.work-card  h3{
+  font-family: 'Outfit';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+color: #000000;
+}
+.work-card p{
+  font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+ 
+
+text-align: center;
+
+color: rgba(0, 0, 0, 0.7);
+}
+
+ 
+.getintouch h4{
+  font-family: 'Outfit';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+ 
+
+color: #000000;
+}
+.getintouch h5{
+  font-family: 'Outfit';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+ 
+
+color: #000000;
+}
+
+.getintouchform input{
+  width:100%;
+padding: 15px;
+border: none ;
+
+background: #FFFFFF;
+box-shadow: 0px 0px 18px -2px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+
+}
+
+.getintouchform textarea{
+  width:100%;
+padding: 15px;
+border: none ;
+
+background: #FFFFFF;
+box-shadow: 0px 0px 18px -2px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+
+}
+
+
+.getintouchform textarea::placeholder{
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+color: rgba(0, 0, 0, 0.4);
+
+
+}
+
+.getintouchform input::placeholder{
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+color: rgba(0, 0, 0, 0.4);
+
+}
+/* ----------------------------------Main Section End -------------------------------- */
+
+/* ----------------------------------Main Footer-------------------------------- */
+.footer-logo img{
+  width: 100px;
+
+}
+.footerlinks a{
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+ 
+
+color: #000000;
+
+}
+
+
+
+
+/* ##############>Login Start  <##############*/
+.loginmain{
+background: #FFF5F5;
+box-shadow: 0px 0px 23px rgba(0, 0, 0, 0.07);
+border-radius: 15px;
+}
+
+
+.logincontet h3{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 32px;
+ 
+
+color: #000000;
+
+}
+
+.logincontet p{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+text-align: center;
+
+color: rgba(0, 0, 0, 0.7);
+
+}
+
+
+
+/* ####################>Form Start<#################  */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Inter';
+    font-style: normal;
+}
+
+/*  ============ Register Form start =============  */
+.fill_form_title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 139.02%;
+    color: #000000;
+}
+
+.form_label_text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 139.02%;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.form_input_formating {
+    border: 0.3px solid rgba(0, 0, 0, 0.7);
+    border-radius: 10px !important;
+    height: 51px;
+}
+
+.form_textarea_formating {
+    border: 0.3px solid rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    height: 100px;
+}
+
+/* -----multiple Files Css start ------- */
+input[type="file"] {
+    display: block;
+}
+
+.imageThumb {
+    max-height: 75px;
+    border: 2px solid;
+    padding: 1px;
+    cursor: pointer;
+}
+
+.pip {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+}
+
+.remove {
+    display: block;
+    background: #444;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.remove:hover {
+    background: white;
+    color: black;
+}
+
+/* -----multiple Files Css end  ------- */
+ 
+/* === Image Area Portion end  =========== */
+.my_submit_btn{
+    width: 98px;
+}
+
+.btncolor-change{
+    background-color: #5CB1FF !important;
+    border-radius: 5px;
+    padding: 10px 24px;
+    font-weight: 400;
+    color: red;
+    font-size: 16px;
+}
+
+
+.uploadregisterimg{
+  
+}
+/* ============ Register Form End =============  */
+
+/* ################>Form End <#############3 */
+
+
+
+
+
+
+/* ###################################Media Query############################## */
+@media only screen and (min-width: 320px) and (max-width: 576px) {
+  /* Styles */
+}
+
+@media only screen and (max-width: 992px) {
+
+
+
+  .homebanner{
+
+
+  width: 100%;
+  height: auto;
+
+}
+
+
+}
+
+@media only screen and (max-width: 767px) {
+  .main__logo {
+    width: 50%;
+  }
+
+  .main__logo img {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  /* Styles */
+}
+
+@media only screen and (max-width: 320px) {
+  /* Styles */
+}
+
+
+/* Sweet Alert Start  */
+
+.swal2-container.swal2-center>.swal2-popup{
+ background: #FFF5F5;
+ padding-top: 30px !important;  
+ padding-bottom: 30px !important;
+ 
+}
+.swal2-title{
+  padding-top: 40px !important;
+ 
+  font-size: 18px !important;
+}
+.swal2-styled.swal2-confirm{
+  display: none !important;
+}
+

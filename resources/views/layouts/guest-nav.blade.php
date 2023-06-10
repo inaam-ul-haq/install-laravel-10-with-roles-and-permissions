@@ -1,46 +1,57 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="{{ route('welcome') }}">{{ config('app.name') }}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light main__header">
+        <div class="container py-2">
+            <a class="navbar-brand main__logo" href="{{ route('welcome') }}">
+                <img src="{{ asset('assets/images/E-Purchase.png') }}" alt="" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
             <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                    @endif
-
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">                            
-                            <a class="dropdown-item" href="{{ route('auth') }}">
-                                {{ __('Dashboard') }}
-                            </a>
-                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
-                        </div>
+            </button>
+            <div class="collapse navbar-collapse navbar__collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav navbar__nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a
+                        class="nav-link nav__link active"
+                        aria-current="page"
+                        href="{{route('welcome')}}#home"
+                        >Home</a
+                    >
                     </li>
-                @endguest
-            </ul>
+                    <li class="nav-item">
+                    <a class="nav-link nav__link" href="{{route('welcome')}}#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link nav__link" href="{{route('welcome')}}#workdoes">How it works</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link nav__link" href="{{route('welcome')}}#contactus">Contact</a>
+                    </li>
+                </ul>
+                <div>
+                    @guest
+                        @if (Route::has('login'))
+                            <a class="btn main__button" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        @endif
+
+                        @if (Route::has('register'))
+                        <a class="btn main__button" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        @endif
+                    @else
+                        <a class="btn main__button" href="{{ route('auth') }}">{{ __('Dashboard') }}</a>
+
+                        <a class="btn main__button" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
+                        </a>
+                    @endguest
+                    {{-- <a href="Form.html">
+                    <button class="btn main__button">Register</button>
+                    </a> --}}
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-bs-labelledby="exampleModalLabel"

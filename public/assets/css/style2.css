@@ -1,0 +1,148 @@
+.notification {
+    background: #fff5f5;
+    border-radius: 20px;
+    width: 469px;
+    height: 264px;
+  }
+  .f1 {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 139.02%;
+
+    /* or 33px */
+    text-align: center;
+
+    color: #000000;
+  }
+
+  .f2 {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 139.02%;
+    /* or 22px */
+
+    text-align: center;
+
+    color: #000000;
+  }
+  .chatBox {
+    background: #fff5f5;
+    border-radius: 20px 20px 0px 0px;
+  }
+  .fp3 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 139.02%;
+    /* or 33px */
+
+    color: #000000;
+  }
+  .reciveMessage {
+    background: #5cb1ff;
+    border-radius: 10px 10px 0px 10px;
+    max-width: 240px;
+    max-height: 86px;
+    position: relative;
+  }
+  .recieveBox {
+    position: relative;
+  }
+  /* .recieveBox::before {
+    content: "";
+    width: 20px;
+
+    height: 5px;
+    right: 0px;
+    top: 100px;
+    position: absolute;
+    background: #5cb1ff;
+    border-top-right-radius: 500px;
+    border-bottom-right-radius: 0px;
+  } */
+  .sentMessage {
+    background: #fff;
+    border-radius: 10px 10px 10px 0px;
+    max-width: 240px;
+    max-height: 86px;
+  }
+  .f3 {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 139.02%;
+    /* or 21px */
+
+    color: rgba(0, 0, 0, 0.8);
+  }
+  .inpMessage {
+    background: #ffffff;
+    border-radius: 130px;
+  }
+  .chatMessage {
+    max-height: 800px;
+    overflow: auto;
+  }
+  /* track Order css */
+  .ft1 {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 139.02%;
+    /* or 33px */
+
+    color: #000000;
+  }
+  .tripBox {
+    background: #fff5f5;
+    border-radius: 10px;
+  }
+  /* .route {
+    position: relative;
+  }
+  .rImg {
+    position: absolute;
+    top: 4px;
+    left: 20px;
+  } */
+  .rImg {
+    margin-left: -10px !important;
+    margin-top: 4px;
+  }
+  .pImage{
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    border: 1px solid red;
+
+  }
+  .mInput{
+    background: #FFFFFF;
+border-radius: 130px;
+  }
+  .tImg{
+    width: 70%;
+  }
+  .lImg{
+    width: 70%;
+  }
+  @media only screen and (max-width: 768px){
+/*Big smartphones [426px -> 600px]*/
+.fSize{
+    font-size: 10px;
+}
+.lImg{
+    display: none;
+}
+.notification{
+    width: 100%!important;
+}
+}

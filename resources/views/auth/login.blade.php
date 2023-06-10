@@ -1,79 +1,58 @@
 <x-guest-layout pageTitle="Login">
-    <!-- Login Section Start  -->
-    <div class="hero">
-        <section class="ftco-section">
-            <div class="row nsdvmn">
+    @section('styles')
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    @endsection
 
-                <div class="col-md-6"></div>
+    <div class="container py-5">
+    <div class="row py-5">
+      <div class="col-md-3"></div>
 
-                <div class="col-md-6 hjdfhdsjfh">
-                    <div class="bg-sign-glass">
-                        <div class="sigin-bg-color" id="sign-bg-set">
+      <div class="col-md-6 loginmain py-2">
+        <div class="text-center p-2 p-md-5">
+          <div class="pb-4 logincontet">
+            <h3>Log In</h3>
 
-                            <h2 class="head-text-form">Login</h2>
-                            <p class="login_play_text">We are happy to see you again!</p>
+            <p>
+              Hey there, Enter your details to <br />
+              Log In to your account
+            </p>
+          </div>
+            <form method="POST" action="{{ route('login') }}" class="row g-1">
+                @csrf
+                <div class="work-card worksection getintouchform">
+                    <div class="my-2">
+                        <input type="text" name="email" placeholder="Email" />
+                        @error('email')
+                            <strong>{{ $message }}</strong>
+                        @enderror
+                    </div>
 
-                            {{-- <form method="POST" action="{{ route('login') }}"> --}}
+                    <div class="my-5">
+                        <input type="text" name="password" placeholder="Password" />
+                        @error('password')
+                            <strong>{{ $message }}</strong>
+                        @enderror
 
-                            <form method="POST" action="{{ route('login') }}" class="row g-1">
-                                @csrf
-                                <div class="col-md-12" style="position: relative;top: 30px;">
-                                    <label class="form-label" id="label-form">Username</label>
-                                    <div class="section space long-value-input-container">
-                                        <input type="text" name="email" required
-                                            placeholder="Enter your Email or username" class="long-value-input"
-                                            value="" style="padding-right: 40px" />
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-12" style="position: relative;top: 60px;">
-                                    <label>Password</label>
-                                    <div class="section space long-value-input-container">
-                                        <input id="password-field" name="password" type="password"
-                                            class="long-value-input" value="" class="pass"
-                                            placeholder="Enter Your Password" name="password">
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                        <a href="{{ route('password.request') }}" class="float-end mt-3 text-decoration-none">Forgot Password?</a>
+                    </div>
 
-                                    </div>
-
-                                    <a href="{{ route('password.request') }}" class="log_forget_pass">forget
-                                        Password</a>
-
-                                </div>
-
-                                <div class="col-md-12" style="position: relative;top: 90px;">
-                                    <button class="btn2  btn-enter  form-control1" type="submit"> Login </button>
-
-                                    <div style="text-align:center;" class="mt-4">
-                                        <img src="{{ url('frontend\img\headerbanner\1.png') }}" alt="">
-                                        <img src="{{ url('frontend\img\headerbanner\2.png') }}" alt="">
-                                        <img src="{{ url('frontend\img\headerbanner\3.png') }}" alt="">
-
-                                    </div>
-
-                                    <div class="d-flex justify-content-center signupbtn">
-                                        <div style="position: relative; top: 10px;">
-                                            <span class="account mt-5" style="font-size: small;">Have an account
-                                                already?
-                                            </span>
-                                            <a href="{{ route('register') }}" class="signup"> Signup</a>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="pt-5">
+                        <div class="main-content">
+                            <button type="submit" class="btn btn-sm px-5">Login</button>
                         </div>
-                        </form>
+
+                        <div class="mt-3">
+                            <p>
+                            Don’t Have Account ?<a href="{{route('register')}}" class="mt-3 text-decoration-none">Sign Up</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </form>
+        </div>
+      </div>
+      <div class="col-md-3"></div>
     </div>
+  </div>
     <!-- Login Section End  -->
 </x-guest-layout>
