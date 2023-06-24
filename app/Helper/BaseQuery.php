@@ -37,6 +37,18 @@ trait BaseQuery
     }
 
     /**
+     * get record by its slug
+     */
+    public function get_by_slug($model, $slug, $relation = null)
+    {
+        if ($relation == null) {
+            return $model->whereSlug($slug)->first();
+        } else {
+            return $model->with($relation)->whereSlug($slug)->first();
+        }
+    }
+
+    /**
      * get record by column
      */
     public function get_by_column($model, $columArr, $relation = null)
@@ -57,6 +69,18 @@ trait BaseQuery
             return $model->where($columArr)->first();
         } else {
             return $model->with($relation)->where($columArr)->first();
+        }
+    }
+
+    /**
+     * get record by column
+     */
+    public function get_by_column_multiple($model, $column, $relation = null)
+    {
+        if ($relation == null) {
+            return $model->where($column)->get();
+        } else {
+            return $model->with($relation)->where($column)->get();
         }
     }
 
