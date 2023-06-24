@@ -5,9 +5,7 @@
             <div class="col-md-6 mx-auto">
                 @hasrole('admin')<x-admin.pages.user.create />@endhasrole
 
-                @hasrole('particular')<x-particular.pages.user.create />@endhasrole
-
-                @hasrole('professional')<x-professional.pages.user.create />@endhasrole
+                @hasrole('user')<x-user.pages.user.create />@endhasrole
             </div>
         </div>
     </div>
