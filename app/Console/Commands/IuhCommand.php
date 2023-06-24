@@ -39,7 +39,7 @@ class IuhCommand extends Command
 
         $this->create_php_classes($controllerName, $requestClassName, $serviceClassName, $migration, $className);
         $this->create_blade($migration, $className);
-        $this->create_components($migration, $className);
+        // $this->create_components($migration, $className);
 
         $this->info("Custom class {$className} generated successfully!");
     }
