@@ -30,10 +30,7 @@ class UserSeeder extends Seeder
         $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo([Permission::all()]);
 
-        $role = Role::create(['name' => 'particular']);
-        $role->givePermissionTo(Permission::all());
-
-        $role = Role::create(['name' => 'professional']);
+        $role = Role::create(['name' => 'user']);
         $role->givePermissionTo(Permission::all());
 
         $user1 = new User;
@@ -46,21 +43,12 @@ class UserSeeder extends Seeder
         $user1->assignRole('admin');
 
         $user2 = new User;
-        $user2->name = 'particular';
-        $user2->username = 'particular';
-        $user2->email = 'particular@gmail.com';
+        $user2->name = 'user';
+        $user2->username = 'user';
+        $user2->email = 'user@gmail.com';
         $user2->password = Hash::make('test123');
         $user2->email_verified_at = now();
         $user2->save();
-        $user2->assignRole('particular');
-
-        $user3 = new User;
-        $user3->name = 'professional';
-        $user3->username = 'professional';
-        $user3->email = 'professional@gmail.com';
-        $user3->password = Hash::make('test123');
-        $user3->email_verified_at = now();
-        $user3->save();
-        $user3->assignRole('professional');
+        $user2->assignRole('user');
     }
 }
