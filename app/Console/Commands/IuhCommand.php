@@ -31,7 +31,7 @@ class IuhCommand extends Command
     public function handle()
     {
         $className = $this->argument('name');
-        $migration = Str::lower($className) . "s";
+        $migration = Str::plural(strtolower($className));
         $controllerName = $className . 'Controller';
         // $controllerNameSpace = 'App\Http\Controllers';
         $requestClassName = $className . 'Request';
@@ -123,10 +123,12 @@ class IuhCommand extends Command
         $stub = str_replace('{{pagename}}', $migration, $stub);
 
         // creating laravel model, migrations, form request, controller classes
-        $this->call('make:model', ['name' => $className], '-mc');
-        // $this->call('make:migration', ['name' => 'create_' . $migration . '_table']);
+        $this->call('make:model', [
+            'name' => $className,
+            '--migration' => true, // Generate migration
+            '--controller' => true, // Generate controller
+        ]);
         $this->call('make:request', ['name' => $requestClassName]);
-        // $this->call('make:controller', ['name' => $controllerName]);
 
         $newControllerPath = app_path("Http/Controllers/{$controllerName}.php");
 
