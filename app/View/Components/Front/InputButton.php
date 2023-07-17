@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Front;
 
 use Illuminate\View\Component;
 
@@ -29,6 +29,6 @@ class InputButton extends Component
      */
     public function render()
     {
-        return view('components.input-button');
+        return view('components.front.input-button');
     }
 }

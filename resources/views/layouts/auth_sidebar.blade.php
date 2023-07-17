@@ -23,14 +23,6 @@
         <x-admin.sidebar />
     @endhasrole
 
-    @hasrole('seller')
-        <x-seller.sidebar />
-    @endhasrole
-
-    @hasrole('buyer')
-        <x-buyer.sidebar />
-    @endhasrole
-
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

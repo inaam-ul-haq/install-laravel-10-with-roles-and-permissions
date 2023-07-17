@@ -86,6 +86,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = $this->_service->show($id);
+
+        if ($data == null) {
+            abort(404);
+        }
+
         return view($this->_directory . '.edit', compact('data'));
     }
 
@@ -98,7 +103,7 @@ class UserController extends Controller
     public function editprofile()
     {
         $data = Auth::user();
-        return view($this->_directory . '.edit', compact('data'));
+        return view($this->_directory . '.edit_my_profile', compact('data'));
     }
 
     /**

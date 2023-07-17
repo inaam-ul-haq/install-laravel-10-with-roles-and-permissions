@@ -58,9 +58,9 @@ Route::group(
         Route::post('/change-password/update', [HomeController::class, 'updatePassword'])->name('update_password');
 
         Route::group(
-            ["middleware" => "role:admin", 'auth'],
+            ["middleware" => "role:admin"],
             function () {
-                // Admin routes here
+                Route::resource('users', UserController::class)->middleware('isAdmin');
             }
         );
     }

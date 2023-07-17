@@ -21,8 +21,8 @@
                         <div class="col-md-12" style="position: relative;top: 20px;">
                             <label>Username</label>
                             <div class="section space long-value-input-container">
-                                <input id="password-field" type="text" class="long-value-input pass"
-                                    name="username">
+                                <input id="password-field" type="text" class="long-value-input pass" name="username"
+                                    value="{{ old('username') }}">
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -33,8 +33,8 @@
                         <div class="col-md-12" style="position: relative;top: 30px;">
                             <label>Email</label>
                             <div class="section space long-value-input-container">
-                                <input id="password-field" type="email" class="long-value-input"
-                                    class="pass" name="email" value="{{ old('email') }}">
+                                <input id="password-field" type="email" class="long-value-input" class="pass"
+                                    name="email" value="{{ old('email') }}">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,8 +45,8 @@
                         <div class="col-md-12" style="position: relative;top: 40px;">
                             <label>Password</label>
                             <div class="section space long-value-input-container">
-                                <input id="password-field" type="password" class="long-value-input"
-                                    class="pass" name="password">
+                                <input id="password-field" type="password" class="long-value-input" class="pass"
+                                    name="password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -57,18 +57,8 @@
                         <div class="col-md-12" style="position: relative;top: 40px;">
                             <label> Repeat Password</label>
                             <div class="section space long-value-input-container">
-                                <input id="password-field" type="password" class="long-value-input"
-                                    value="" class="pass" name="password_confirmation" required
-                                    autocomplete="new-password">
-                            </div>
-                        </div>
-                        <div class="col-md-12" style="position: relative;top: 40px;">
-                            <label> Repeat Password</label>
-                            <div class="section space long-value-input-container">
-                                <select name="role" id="role">
-                                    <option value="particular">particular</option>
-                                    <option value="professional">professional</option>
-                                </select>
+                                <input id="password-field" type="password" class="long-value-input" value=""
+                                    class="pass" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 

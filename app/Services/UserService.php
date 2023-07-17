@@ -26,7 +26,9 @@ class UserService
      */
     public function index()
     {
-        return $this->get_all($this->_model);
+        return $this->_model->whereHas('roles', function ($q) {
+            $q->where('name', '!=', 'admin');
+        })->get();
     }
 
     /**
