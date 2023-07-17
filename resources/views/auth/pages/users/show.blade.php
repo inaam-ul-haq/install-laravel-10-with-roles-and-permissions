@@ -3,9 +3,7 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                @hasrole('admin')<x-admin.pages.user.show :compoData="$data" />@endhasrole
-
-                @hasrole('user')<x-user.pages.user.show :compoData="$data" />@endhasrole
+                @dd($data)
             </div>
         </div>
     </div>
