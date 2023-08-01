@@ -50,8 +50,13 @@ class {{ class }} extends Controller
      */
     public function store({{RequestValidation}} $request)
     {
-        $this->_service->store($request->validated());
-        return redirect()->route($this->_route . '.index');
+        try {
+            $this->_service->store($request->validated());
+            return redirect()->route($this->_route . '.index')->with('success', 'Something went wrong.');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->route($this->_route . '.index')->with('error', 'Something went wrong.');
+        }
     }
 
     /**
@@ -85,8 +90,13 @@ class {{ class }} extends Controller
      */
     public function update({{RequestValidation}} $request, $id)
     {
-        $this->_service->update($id, $request->validated());
-        return redirect()->route($this->_route . '.index');
+        try {
+            $this->_service->update($id, $request->validated());
+            return redirect()->route($this->_route . '.index')->with('success', 'Something went wrong.');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->route($this->_route . '.index')->with('error', 'Something went wrong.');
+        }        
     }
 
     /**
