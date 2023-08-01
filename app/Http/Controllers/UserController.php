@@ -51,8 +51,13 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $this->_service->store($request->validated());
-        return redirect()->route($this->_route . '.index');
+        try {
+            $this->_service->store($request->validated());
+            return redirect()->route($this->_route . '.index');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->route($this->_route . '.index')->with('error', 'Something went wrong.');
+        }
     }
 
     /**
