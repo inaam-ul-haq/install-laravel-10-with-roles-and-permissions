@@ -38,6 +38,7 @@ class HomeController extends Controller
         Auth::logout();
         return redirect()->route('welcome');
     }
+
     public function changePassword()
     {
         return view('auth.passwords.change-password');
